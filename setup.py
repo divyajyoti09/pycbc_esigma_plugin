@@ -23,7 +23,7 @@ setup (
     author = 'Divyajyoti',
     author_email = 'divyajyoti.physics@gmail.com',
     url = 'http://www.pycbc.org/',
-    download_url = 'https://github.com/divyajyoti09/pycbc_esigma_plugin'
+    download_url = 'https://github.com/divyajyoti09/pycbc_esigma_plugin',
     keywords = ['pycbc', 'signal processing', 'gravitational waves'],
     install_requires = ['pycbc', 'gwnr'],
     py_modules = ['ESIGMA'],
