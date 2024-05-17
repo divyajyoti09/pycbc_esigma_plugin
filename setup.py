@@ -5,6 +5,7 @@ setup.py file for pycbc waveform plugin package to use ESIGMA waveforms
 
 from setuptools import Extension, setup, Command
 from setuptools import find_packages
+from os import path
 
 VERSION = '1.0'
 
