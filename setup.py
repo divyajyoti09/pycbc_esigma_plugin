@@ -8,11 +8,18 @@ from setuptools import find_packages
 
 VERSION = '1.0'
 
+def get_long_description():
+    """Finds the README and reads in the description"""
+    here = path.abspath(path.dirname(__file__))
+    with open(path.join(here, "README.md")) as f:
+        long_description = f.read()
+    return long_description
+
 setup (
     name = 'pycbc-esigma-plugin',
     version = VERSION,
     description = 'Waveform plugin for PyCBC',
-    long_description = open('descr.rst').read(),
+    long_description = get_long_description(),
     author = 'Divyajyoti',
     author_email = 'divyajyoti.physics@gmail.com',
     url = 'http://www.pycbc.org/',
