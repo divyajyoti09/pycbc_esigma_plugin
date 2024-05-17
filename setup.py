@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-setup.py file for ESIGMA waveforms and pycbc waveform plugin package
+setup.py file for pycbc waveform plugin package to use ESIGMA waveforms
 """
 
 from setuptools import Extension, setup, Command
@@ -22,7 +22,8 @@ setup (
     py_modules = ['ESIGMA'],
     entry_points = {"pycbc.waveform.td": ["ESIGMA = IMRESIGMAHM:IMRESIGMAHM_td", 
                                           "ESIGMA = IMRESIGMA:IMRESIGMA_td", 
-                                          "ESIGMA = InspiralESIGMAHM:InspiralESIGMAHM_td"], },
+                                          "ESIGMA = InspiralESIGMAHM:InspiralESIGMAHM_td",
+                                          "ESIGMA = InspiralESIGMA:InspiralESIGMA_td"], },
     classifiers=[
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
