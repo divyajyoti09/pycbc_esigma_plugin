@@ -1,4 +1,4 @@
-from gwnr.waveform import enigma_utils
+from gwnr.waveform import esigma_utils
 from pycbc.types.timeseries import TimeSeries
 
 def IMRESIGMAHM_td(**input_params):
