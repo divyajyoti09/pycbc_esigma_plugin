@@ -22,7 +22,7 @@ def main():
             
             if insert_index is not None:
                 # Prepare the line to insert
-                insert_line = f'\nos.environ["LAL_DATA_PATH"] = "{lal_data_path}"\n'
+                insert_line = f'\nimport os \nos.environ["LAL_DATA_PATH"] = "{lal_data_path}"\n\n'
                 
                 # Insert the line into the file content
                 lines.insert(insert_index, insert_line)
