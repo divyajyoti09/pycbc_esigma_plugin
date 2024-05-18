@@ -28,6 +28,7 @@ setup (
     keywords = ['pycbc', 'signal processing', 'gravitational waves'],
     install_requires = ['pycbc', 'gwnr'],
     py_modules = ['ESIGMA'],
+    packages = find_packages(),
     entry_points={
         "pycbc.waveform.td": [
             "IMRESIGMAHM = ESIGMA:IMRESIGMAHM_td",
