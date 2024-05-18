@@ -1,4 +1,5 @@
 import os
+import sys
 
 def main():
     lal_data_path = os.environ.get('LAL_DATA_PATH')
@@ -7,8 +8,10 @@ def main():
     
     if lal_data_path:
         try:
+            import gwnr
+            
             # Path to esigma_utils.py
-            esigma_utils_path = os.path.join(os.path.dirname(__file__), 'gwnr', 'waveform', 'esigma_utils.py')
+            esigma_utils_path = os.path.join(os.path.dirname(gwnr.__file__), 'waveform', 'esigma_utils.py')
             
             # Read the content of esigma_utils.py
             with open(esigma_utils_path, 'r') as file:
@@ -34,6 +37,8 @@ def main():
                 print(f'LAL_DATA_PATH has been set to: {lal_data_path} in esigma_utils.py')
             else:
                 print('Could not find a suitable place to insert the LAL_DATA_PATH line.')
+        except ImportError:
+            print('The gwnr module could not be imported. Ensure it is installed.')
         except Exception as e:
             print(f'An error occurred while modifying esigma_utils.py: {e}')
     else:
