@@ -27,7 +27,7 @@ setup (
     download_url = 'https://github.com/divyajyoti09/pycbc_esigma_plugin',
     keywords = ['pycbc', 'signal processing', 'gravitational waves'],
     install_requires = ['pycbc', 'gwnr'],
-    py_modules = ['ESIGMA'],
+    py_modules = ['ESIGMA', 'post_install'],
     packages = find_packages(),
     entry_points={
         "pycbc.waveform.td": [
