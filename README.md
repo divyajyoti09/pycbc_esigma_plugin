@@ -24,7 +24,7 @@ Set `$LAL_DATA_PATH` which contains essential waveforms files such as `NRSur7dq4
 ```
 export LAL_DATA_PATH=/path/to/lal_data_files
 ```
-Install the post-install-script. This script modifies `gwnr/waveform/esigma_utils.py` to include the path to `$LAL_DATA_PATH` specified above
+Run the post-install-script. This script modifies `gwnr/waveform/esigma_utils.py` to include the path to `$LAL_DATA_PATH` specified above
 ```
 pycbc-esigma-post-install
 ```
