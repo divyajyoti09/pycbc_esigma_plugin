@@ -14,28 +14,17 @@ pip install .
 ```
 
 ### Install pycbc_esigma_plugin
-
-Clone the repository
-```
-git clone https://github.com/divyajyoti09/pycbc_esigma_plugin.git
-```
-Enter the directory
-```
-cd pycbc_esigma_plugin
-```
 Install the plugin
 ```
+git clone https://github.com/divyajyoti09/pycbc_esigma_plugin.git
+cd pycbc_esigma_plugin
 pip install .
 ```
-Set `$LAL_DATA_PATH` which contains essential waveforms files such as `NRSur7dq4.h5`
-
-This is required to call IMRESIGMA waveforms
+Set `$LAL_DATA_PATH` which contains essential waveforms files such as `NRSur7dq4.h5`. This is required to call IMRESIGMA waveforms
 ```
 export LAL_DATA_PATH=/path/to/lal_data_files
 ```
-Install the post-install-script
-
-This script modifies `gwnr/waveform/esigma_utils.py` to include the path to `$LAL_DATA_PATH` specified above
+Install the post-install-script. This script modifies `gwnr/waveform/esigma_utils.py` to include the path to `$LAL_DATA_PATH` specified above
 ```
 pycbc-esigma-post-install
 ```
