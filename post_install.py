@@ -10,7 +10,7 @@ def main():
         try:
             import gwnr
             
-            # Path to esigma_utils.py (adjust this path as necessary)
+            # Path to esigma_utils.py
             esigma_utils_path = os.path.join(os.path.dirname(gwnr.__file__), 'waveform', 'esigma_utils.py')
             
             # Read the content of esigma_utils.py
