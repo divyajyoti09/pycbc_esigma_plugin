@@ -1,4 +1,3 @@
-from gwnr.waveform import esigma_utils
 from pycbc.types.timeseries import TimeSeries
 
 try:
@@ -43,6 +42,8 @@ def IMRESIGMAHM_td(**input_params):
     hcross : PyCBC TimeSeries
         The cross-polarization of the waveform in time domain tapered from start to 0.4s.
     """
+    #importing here instead of globally to avoid circular imports
+    from gwnr.waveform import esigma_utils
     
     hp, hc = esigma_utils.get_imr_esigma_waveform(**input_params)
     hp_ts = TimeSeries(hp, input_params['delta_t'])
@@ -69,6 +70,9 @@ def IMRESIGMA_td(**input_params):
     hcross : PyCBC TimeSeries
         The cross-polarization of the waveform in time domain tapered from start to 0.4s.
     """
+    #importing here instead of globally to avoid circular imports
+    from gwnr.waveform import esigma_utils
+    
     hp, hc = esigma_utils.get_imr_esigma_waveform(**input_params, modes_to_use=[(2, 2)])
     hp_ts = TimeSeries(hp, input_params['delta_t'])
     hc_ts = TimeSeries(hc, input_params['delta_t'])
@@ -94,6 +98,9 @@ def InspiralESIGMAHM_td(**input_params):
     hcross : PyCBC TimeSeries
         The cross-polarization of the waveform in time domain tapered from start to 0.4s.
     """
+    #importing here instead of globally to avoid circular imports
+    from gwnr.waveform import esigma_utils
+    
     _, hp, hc = esigma_utils.get_inspiral_esigma_waveform(**input_params)
     hp_ts = TimeSeries(hp, input_params['delta_t'])
     hc_ts = TimeSeries(hc, input_params['delta_t'])
@@ -119,6 +126,9 @@ def InspiralESIGMA_td(**input_params):
     hcross : PyCBC TimeSeries
         The cross-polarization of the waveform in time domain tapered from start to 0.4s.
     """
+    #importing here instead of globally to avoid circular imports
+    from gwnr.waveform import esigma_utils
+    
     hp, hc = esigma_utils.get_inspiral_esigma_waveform(**input_params, modes_to_use=[(2, 2)])
     hp_ts = TimeSeries(hp, input_params['delta_t'])
     hc_ts = TimeSeries(hc, input_params['delta_t'])
