@@ -129,7 +129,7 @@ def InspiralESIGMA_td(**input_params):
     #importing here instead of globally to avoid circular imports
     from gwnr.waveform import esigma_utils
     
-    hp, hc = esigma_utils.get_inspiral_esigma_waveform(**input_params, modes_to_use=[(2, 2)])
+    _, hp, hc = esigma_utils.get_inspiral_esigma_waveform(**input_params, modes_to_use=[(2, 2)])
     hp_ts = TimeSeries(hp, input_params['delta_t'])
     hc_ts = TimeSeries(hc, input_params['delta_t'])
     
