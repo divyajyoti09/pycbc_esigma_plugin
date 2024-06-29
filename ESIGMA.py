@@ -34,11 +34,13 @@ def use_modified_input_params(**input_params):
     verbose = modified_input_params.get("verbose", False)
     
     if 'alpha' in input_params:
-        modified_input_params["eccentricity"] = float(input_params.get("alpha", 0))
+        eccentricity = float(input_params.get("alpha", 0))
+        modified_input_params["eccentricity"] = eccentricity
         if verbose:
                 print(f"Using eccentricity from `alpha` column, value = {eccentricity}")
     if 'alpha1' in input_params:
-        modified_input_params["mean_anomaly"] = float(input_params.get("alpha1", 0))
+        mean_anomaly = float(input_params.get("alpha1", 0))
+        modified_input_params["mean_anomaly"] = mean_anomaly
         if verbose:
                 print(f"Using mean_anomaly from `alpha1` column, value = {mean_anomaly}")
     return(modified_input_params)
