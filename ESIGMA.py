@@ -32,8 +32,6 @@ def use_modified_input_params(**input_params):
 
     modified_input_params = deepcopy(input_params)
     verbose = modified_input_params.get("verbose", False)
-    if verbose: 
-        print(f"Assigning eccentricity a value now")
     
     if 'alpha' in input_params:
         modified_input_params["eccentricity"] = float(input_params.get("alpha", 0))
