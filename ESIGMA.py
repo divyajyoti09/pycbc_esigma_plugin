@@ -1,4 +1,5 @@
 from pycbc.types.timeseries import TimeSeries
+from copy import deepcopy
 
 try:
     # some versions of pycbc include td_taper in pycbc.waveform
@@ -25,6 +26,22 @@ def taper_signal(signal, beta=5):
     signal_tapered = td_taper(signal, signal.sample_times[0], signal.sample_times[0]+0.4, beta=beta)
     return(signal_tapered)
 
+def use_modified_input_params(**input_params):
+    # sim_inspiral table format uses alpha, alpha1, alpha2.. for additional parameters
+    # hence using alpha as a proxy for eccentricity
+
+    modified_input_params = deepcopy(input_params)
+    
+    if 'alpha' in input_params:
+        modified_input_params["eccentricity"] = float(input_params.get("alpha", 0))
+        if verbose:
+                print(f"Using eccentricity from `alpha` column, value = {eccentricity}")
+    if 'alpha1' in input_params:
+        modified_input_params["mean_anomaly"] = float(input_params.get("alpha1", 0))
+        if verbose:
+                print(f"Using mean_anomaly from `alpha1` column, value = {mean_anomaly}")
+    return(modified_input_params)
+
 def IMRESIGMAHM_td(**input_params):
     """
     Returns tapered time domain gravitational polarizations for IMRESIGMAHM waveform containing all (l,|m|) modes available.
@@ -44,8 +61,10 @@ def IMRESIGMAHM_td(**input_params):
     """
     #importing here instead of globally to avoid circular imports
     from gwnr.waveform import esigma_utils
+
+    wf_input_params = use_modified_input_params(**input_params)
     
-    hp, hc = esigma_utils.get_imr_esigma_waveform(**input_params)
+    hp, hc = esigma_utils.get_imr_esigma_waveform(**wf_input_params)
     hp_ts = TimeSeries(hp, input_params['delta_t'])
     hc_ts = TimeSeries(hc, input_params['delta_t'])
     
@@ -72,8 +91,10 @@ def IMRESIGMA_td(**input_params):
     """
     #importing here instead of globally to avoid circular imports
     from gwnr.waveform import esigma_utils
+
+    wf_input_params = use_modified_input_params(**input_params)
     
-    hp, hc = esigma_utils.get_imr_esigma_waveform(**input_params, modes_to_use=[(2, 2)])
+    hp, hc = esigma_utils.get_imr_esigma_waveform(**wf_input_params, modes_to_use=[(2, 2)])
     hp_ts = TimeSeries(hp, input_params['delta_t'])
     hc_ts = TimeSeries(hc, input_params['delta_t'])
     
@@ -100,8 +121,10 @@ def InspiralESIGMAHM_td(**input_params):
     """
     #importing here instead of globally to avoid circular imports
     from gwnr.waveform import esigma_utils
+
+    wf_input_params = use_modified_input_params(**input_params)
     
-    _, hp, hc = esigma_utils.get_inspiral_esigma_waveform(**input_params)
+    _, hp, hc = esigma_utils.get_inspiral_esigma_waveform(**wf_input_params)
     hp_ts = TimeSeries(hp, input_params['delta_t'])
     hc_ts = TimeSeries(hc, input_params['delta_t'])
     
@@ -128,8 +151,10 @@ def InspiralESIGMA_td(**input_params):
     """
     #importing here instead of globally to avoid circular imports
     from gwnr.waveform import esigma_utils
+
+    wf_input_params = use_modified_input_params(**input_params)
     
-    _, hp, hc = esigma_utils.get_inspiral_esigma_waveform(**input_params, modes_to_use=[(2, 2)])
+    _, hp, hc = esigma_utils.get_inspiral_esigma_waveform(**wf_input_params, modes_to_use=[(2, 2)])
     hp_ts = TimeSeries(hp, input_params['delta_t'])
     hc_ts = TimeSeries(hc, input_params['delta_t'])
     
