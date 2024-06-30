@@ -23,7 +23,13 @@ def taper_signal(signal, beta=5):
 
     signal_tapered : PyCBC TimeSeries
     """
-    signal_tapered = td_taper(signal, signal.sample_times[0], signal.sample_times[0]+0.4, beta=beta)
+    signal_length = signal.sample_times[-1] - signal.sample_times[0]
+    if signal_length <= 0.4:
+        taper_window = signal_length/7
+    else:
+        taper_window = 0.4
+    signal_tapered = td_taper(signal, signal.sample_times[0], signal.sample_times[0]+taper_window, beta=beta)
+    print(f'signal_length = {signal_length}, taper_window = {taper_window}')
     return(signal_tapered)
 
 def use_modified_input_params(**input_params):
